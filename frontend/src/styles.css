@@ -79,3 +79,64 @@ h2 {
 .boton-peligro {
   background: var(--color-peligro);
 }
+
+.pastilla-gris {
+  background: #eceff2;
+  color: var(--color-apagado);
+}
+
+/* Título de página a la izquierda y algo (una pastilla, un botón) a la derecha */
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cabecera p {
+  margin: 0.25rem 0;
+}
+
+/* Cada sección dentro de un viaje: Actividades, Tareas, Gastos, Documentos */
+.seccion {
+  padding: 1rem 1.25rem;
+}
+
+.seccion h2 {
+  margin: 0 0 0.5rem;
+}
+
+/* Formularios: igual en todas las pantallas */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--color-principal);
+  border-color: transparent;
+}
+
+/* Iconos SVG de línea, como los del menú */
+.icono {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
