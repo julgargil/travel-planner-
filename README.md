@@ -41,18 +41,39 @@ Ahora estamos en la **fase 1**.
 ## Estructura y reparto
 
 ```
-frontend/src/
-├── styles.css            ← estilos comunes de toda la web            (P1)
-└── app/
-    ├── app.html/.ts/.css ← esqueleto: menú + contenido               (P1)
-    ├── app.routes.ts     ← las páginas y sus URLs                    (P1)
-    ├── layout/sidebar/   ← menú lateral                              (P1)
-    ├── viajes/           ← Mis viajes, Nuevo viaje y Ver viaje       (P1)
-    ├── actividades/      ← sección Actividades de un viaje           (P2)
-    ├── tareas/           ← sección Tareas de un viaje                (P3)
-    ├── gastos/           ← sección Gastos de un viaje                (P4)
-    └── documentos/       ← sección Documentos de un viaje            (P5)
+travel-planner-/
+├── docs/                       ← acta, diario, declaración de IA…       (todos)
+└── frontend/src/
+    ├── styles.css              ← solo importa los 3 de styles/          (P1)
+    ├── styles/
+    │   ├── variables.css       ← colores y medidas                      (P1)
+    │   ├── base.css            ← página, títulos y formularios          (P1)
+    │   └── componentes.css     ← tarjeta, botón, pastilla, sección…     (P1)
+    └── app/
+        ├── app.html/.ts/.css   ← esqueleto: menú + contenido            (P1)
+        ├── app.routes.ts       ← las páginas y sus URLs                 (P1)
+        ├── layout/sidebar/     ← menú lateral                           (P1)
+        ├── shared/models/      ← la forma de los datos (viaje.ts)       (P1)
+        └── features/           ← una carpeta por parte de la app
+            ├── viajes/                                                  (P1)
+            │   ├── pages/      ← lista-viajes, crear-viaje, detalle-viaje
+            │   ├── components/ ← tarjeta-viaje
+            │   └── data/       ← datos-ejemplo.ts
+            ├── actividades/    ← sección Actividades de un viaje        (P2)
+            ├── tareas/         ← sección Tareas de un viaje             (P3)
+            ├── gastos/         ← sección Gastos de un viaje             (P4)
+            └── documentos/     ← sección Documentos de un viaje         (P5)
 ```
+
+Dentro de cada parte se sigue el mismo esquema que en `viajes/`:
+
+| Carpeta | Qué va dentro |
+| --- | --- |
+| `pages/` | Componentes que son una página, con su propia URL |
+| `components/` | Piezas que no son una página: una tarjeta, un formulario… |
+| `data/` | Datos de ejemplo de la fase 1 |
+
+Las secciones de Actividades, Tareas, Gastos y Documentos no son páginas: van **dentro** de Ver viaje. Por eso su componente principal está directamente en su carpeta (`features/gastos/gastos.ts`), y las piezas que añadáis irán en `features/gastos/components/`.
 
 Las páginas son:
 
@@ -66,12 +87,13 @@ Los componentes de Actividades, Tareas, Gastos y Documentos **ya están creados 
 
 ## Reglas para trabajar sin pisarnos
 
-1. **Cada uno trabaja solo dentro de su carpeta.** P4, por ejemplo, solo toca `gastos/`.
-2. **Los archivos comunes son de P1**: `app.*`, `app.routes.ts`, `layout/`, `viajes/` y `styles.css`. Si necesitas un cambio en ellos, pídeselo a P1 o avisa antes en el grupo.
-3. **Usa las clases comunes de `styles.css`** en vez de inventar colores: `tarjeta`, `seccion`, `boton`, `boton-secundario`, `boton-peligro`, `pastilla`, `pastilla-gris`, `apagado`, `cabecera` e `icono`. Los colores están en variables, como `var(--color-principal)`.
+1. **Cada uno trabaja solo dentro de su carpeta.** P4, por ejemplo, solo toca `features/gastos/`.
+2. **Los archivos comunes son de P1**: `app.*`, `app.routes.ts`, `layout/`, `shared/`, `features/viajes/`, `styles.css` y `styles/`. Si necesitas un cambio en ellos, pídeselo a P1 o avisa antes en el grupo.
+3. **Usa las clases comunes de `styles/componentes.css`** en vez de inventar colores: `tarjeta`, `seccion`, `boton`, `boton-secundario`, `boton-peligro`, `pastilla`, `pastilla-gris`, `apagado`, `cabecera` e `icono`. Los colores están en variables, como `var(--color-principal)`.
 4. **Nada de `style="..."` con colores** en el HTML. Los estilos propios van en el `.css` de tu componente, que solo afecta a tu componente.
-5. **Si tu parte necesita más piezas**, créalas dentro de tu carpeta: `ng generate component gastos/formulario-gasto`.
-6. **Antes de subir, pasa los tests** (`ng test --watch=false`). Si tu componente usa `routerLink`, su test necesita `providers: [provideRouter([])]`.
+5. **Si tu parte necesita más piezas**, créalas en `components/` dentro de tu carpeta: `ng generate component features/gastos/components/formulario-gasto`.
+6. **Si necesitas los datos de un viaje**, usa el modelo común: `import { Viaje } from '../../shared/models/viaje';`. No lo copies a tu carpeta.
+7. **Antes de subir, pasa los tests** (`ng test --watch=false`). Si tu componente usa `routerLink`, su test necesita `providers: [provideRouter([])]`.
 
 ### Cómo empezar tu parte
 
@@ -79,10 +101,10 @@ Tu componente ya existe. Por ejemplo, para Gastos:
 
 | Archivo | Qué es |
 | --- | --- |
-| `gastos/gastos.html` | Lo que se ve. Ahora pone "Próximamente": sustitúyelo por tu diseño |
-| `gastos/gastos.css` | Los estilos de tu sección |
-| `gastos/gastos.ts` | La lógica. En la fase 1 casi no hace falta tocarlo |
-| `gastos/gastos.spec.ts` | Su test |
+| `features/gastos/gastos.html` | Lo que se ve. Ahora pone "Próximamente": sustitúyelo por tu diseño |
+| `features/gastos/gastos.css` | Los estilos de tu sección |
+| `features/gastos/gastos.ts` | La lógica. En la fase 1 casi no hace falta tocarlo |
+| `features/gastos/gastos.spec.ts` | Su test |
 
 Para verlo, arranca con `ng serve` y entra en un viaje: `/viajes/1`.
 
