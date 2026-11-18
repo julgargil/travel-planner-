@@ -1,0 +1,34 @@
+<div class="cabecera">
+  <div>
+    <h1>Mis viajes</h1>
+    <p class="apagado">Tus planes, recuerdos y próximas escapadas.</p>
+  </div>
+  <span class="pastilla">{{ viajes.length }} viajes</span>
+</div>
+
+<h2>Todos tus viajes</h2>
+
+<div class="rejilla">
+  @for (viaje of viajes; track viaje.id) {
+    <article class="tarjeta viaje">
+      <header class="viaje-cabecera">
+        <span class="apagado">{{ viaje.pais }}</span>
+        <span class="pastilla" [class.pastilla-gris]="viaje.estado === 'Finalizado'">{{ viaje.estado }}</span>
+      </header>
+
+      <div class="viaje-cuerpo">
+        <h3>{{ viaje.origen }} - {{ viaje.destino }}</h3>
+        <p>{{ viaje.fechas }}</p>
+        <p class="apagado">{{ viaje.dias }} días · {{ viaje.viajeros }} viajeros</p>
+      </div>
+
+      <a class="viaje-pie" [routerLink]="['/viajes', viaje.id]">
+        Ver viaje
+        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </article>
+  }
+</div>
