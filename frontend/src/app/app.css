@@ -3,11 +3,13 @@
   min-height: 100vh;
 }
 
-.sidebar {
-  width: 240px;
+.lateral {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  width: 220px;
+  height: 100vh;
   background: var(--color-principal);
-  color: white;
-  padding: 1.5rem;
 }
 
 .contenido {

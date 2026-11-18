@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  background: none;
+  color: white;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.opcion:hover,
+.opcion.activa {
+  background: var(--color-principal-oscuro);
+}
+
+.opcion svg {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.salir {
+  margin-top: auto;
+  border-bottom: none;
+}
