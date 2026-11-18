@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Actividades } from '../../actividades/actividades';
-import { Documentos } from '../../documentos/documentos';
-import { Gastos } from '../../gastos/gastos';
-import { Tareas } from '../../tareas/tareas';
-import { VIAJES_EJEMPLO } from '../datos-ejemplo';
+import { Actividades } from '../../../actividades/actividades';
+import { Documentos } from '../../../documentos/documentos';
+import { Gastos } from '../../../gastos/gastos';
+import { Tareas } from '../../../tareas/tareas';
+import { VIAJES_EJEMPLO } from '../../data/datos-ejemplo';
 
 @Component({
   selector: 'app-detalle-viaje',

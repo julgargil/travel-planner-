@@ -1,0 +1,20 @@
+<article class="tarjeta viaje">
+  <header class="viaje-cabecera">
+    <span class="apagado">{{ viaje().pais }}</span>
+    <span class="pastilla" [class.pastilla-gris]="viaje().estado === 'Finalizado'">{{ viaje().estado }}</span>
+  </header>
+
+  <div class="viaje-cuerpo">
+    <h3>{{ viaje().origen }} - {{ viaje().destino }}</h3>
+    <p>{{ viaje().fechas }}</p>
+    <p class="apagado">{{ viaje().dias }} días · {{ viaje().viajeros }} viajeros</p>
+  </div>
+
+  <a class="viaje-pie" [routerLink]="['/viajes', viaje().id]">
+    Ver viaje
+    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  </a>
+</article>

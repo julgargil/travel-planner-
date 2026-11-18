@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { VIAJES_EJEMPLO } from '../datos-ejemplo';
+import { TarjetaViaje } from '../../components/tarjeta-viaje/tarjeta-viaje';
+import { VIAJES_EJEMPLO } from '../../data/datos-ejemplo';
 
 @Component({
   selector: 'app-lista-viajes',
-  imports: [RouterLink],
+  imports: [TarjetaViaje],
   templateUrl: './lista-viajes.html',
   styleUrl: './lista-viajes.css',
 })

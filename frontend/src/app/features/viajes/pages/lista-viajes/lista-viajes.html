@@ -1,0 +1,15 @@
+<div class="cabecera">
+  <div>
+    <h1>Mis viajes</h1>
+    <p class="apagado">Tus planes, recuerdos y próximas escapadas.</p>
+  </div>
+  <span class="pastilla">{{ viajes.length }} viajes</span>
+</div>
+
+<h2>Todos tus viajes</h2>
+
+<div class="rejilla">
+  @for (viaje of viajes; track viaje.id) {
+    <app-tarjeta-viaje [viaje]="viaje" />
+  }
+</div>
