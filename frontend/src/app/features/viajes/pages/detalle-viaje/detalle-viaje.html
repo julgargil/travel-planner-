@@ -1,3 +1,4 @@
+<!-- Botón de volver de Julia -->
 <a class="volver" routerLink="/viajes">
   <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
     <path d="m12 19-7-7 7-7" />
@@ -6,6 +7,7 @@
   Mis viajes
 </a>
 
+<!-- Cabecera de Julia con los datos reales -->
 <div class="cabecera">
   <div>
     <p class="apagado">{{ viaje.pais }}</p>
@@ -15,7 +17,7 @@
   <span class="pastilla" [class.pastilla-gris]="viaje.estado === 'Finalizado'">{{ viaje.estado }}</span>
 </div>
 
-<!-- Solo interfaz: de momento los botones no hacen nada. -->
+<!-- Botones de Editar y Borrar de Julia -->
 <div class="acciones">
   <button type="button" class="boton boton-secundario">
     <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
@@ -33,10 +35,16 @@
   </button>
 </div>
 
-<!-- Cada compañero trabaja SOLO dentro de su carpeta: actividades/, tareas/, gastos/, documentos/ -->
-<div class="secciones">
-  <app-actividades />
-  <app-tareas />
-  <app-gastos />
-  <app-documentos />
-</div>
+<!-- NUESTRA BOTONERA DE NAVEGACIÓN -->
+<nav class="navegacion-secciones">
+  <a routerLink="informacion" routerLinkActive="activo" class="btn-seccion">Información</a>
+  <a routerLink="itinerario" routerLinkActive="activo" class="btn-seccion">Itinerario</a>
+  <a routerLink="tareas" routerLinkActive="activo" class="btn-seccion">Tareas</a>
+  <a routerLink="gastos" routerLinkActive="activo" class="btn-seccion">Gastos</a>
+  <a routerLink="documentos" routerLinkActive="activo" class="btn-seccion">Documentos</a>
+</nav>
+
+<!-- EL CONTENEDOR DINÁMICO (Aquí se carga la sección que pulses) -->
+<main class="contenido-dinamico">
+  <router-outlet></router-outlet>
+</main>
