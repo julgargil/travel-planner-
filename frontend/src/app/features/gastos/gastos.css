@@ -1,0 +1,109 @@
+.gastos-container {
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.titulo-seccion {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.panel-gastos {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.resumen-tarjetas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.tarjeta-resumen {
+  flex: 1;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tarjeta-resumen.destacada {
+  background: #e0f2fe; /* Azul claro para el total */
+}
+
+.tarjeta-label {
+  font-size: 14px;
+  color: #475569;
+}
+
+.tarjeta-valor {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.lista-gastos {
+  display: flex;
+  flex-direction: column;
+}
+
+.gasto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.gasto-item:last-child {
+  border-bottom: none;
+}
+
+.gasto-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gasto-concepto {
+  font-size: 15px;
+  color: #1e293b;
+}
+
+.gasto-badge {
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-weight: 500;
+}
+
+.gasto-importe {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.widget-tiempo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 14px;
+  color: #475569;
+}
+
+.icono-nube {
+  width: 20px;
+  height: 20px;
+}
