@@ -1,0 +1,87 @@
+/* Clases comunes que puede usar cualquier componente. */
+
+.apagado {
+  color: var(--color-apagado);
+  font-size: 0.85rem;
+}
+
+/* Título de página a la izquierda y algo (una pastilla, un botón) a la derecha */
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cabecera p {
+  margin: 0.25rem 0;
+}
+
+/* Caja blanca con borde y esquinas redondeadas */
+.tarjeta {
+  background: white;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+/* Cada sección dentro de un viaje: Actividades, Tareas, Gastos, Documentos */
+.seccion {
+  padding: 1rem 1.25rem;
+}
+
+.seccion h2 {
+  margin: 0 0 0.5rem;
+}
+
+/* Etiqueta redondeada: "4 viajes", "Próximo"… */
+.pastilla {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-pastilla);
+  color: var(--color-principal-oscuro);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pastilla-gris {
+  background: #eceff2;
+  color: var(--color-apagado);
+}
+
+/* Botones: principal (azul), secundario (borde) y peligro (rojo) */
+.boton {
+  font: inherit;
+  padding: 0.55rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-principal);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: var(--color-principal-oscuro);
+}
+
+.boton-secundario {
+  background: none;
+  border: 1px solid var(--color-borde);
+  color: var(--color-principal-oscuro);
+}
+
+.boton-peligro {
+  background: var(--color-peligro);
+}
+
+/* Iconos SVG de línea, como los del menú */
+.icono {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

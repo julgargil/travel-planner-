@@ -1,0 +1,13 @@
+/* Colores y medidas de toda la web. Cambia un valor aquí y cambia en todas partes. */
+:root {
+  --color-principal: #5a9bb8;
+  --color-principal-oscuro: #3f7f9c;
+  --color-fondo: #ffffff;
+  --color-cabecera: #f3f7f9;
+  --color-borde: #e1e7ec;
+  --color-texto: #1f2d3a;
+  --color-apagado: #6b7a88;
+  --color-pastilla: #e6f0f5;
+  --color-peligro: #c0392b;
+  --radio: 10px;
+}
