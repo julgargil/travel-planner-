@@ -1,0 +1,52 @@
+<h1>Nuevo viaje</h1>
+<p class="apagado">Elige el destino y empieza a planear tu próxima escapada.</p>
+
+<!-- Solo interfaz: de momento los botones no hacen nada. -->
+<form class="tarjeta formulario">
+  <div>
+    <h2>Datos del viaje</h2>
+    <p class="apagado">¿A dónde nos vamos?</p>
+  </div>
+
+  <div class="dos-columnas">
+    <label>
+      Origen
+      <input placeholder="Madrid, España" />
+    </label>
+    <label>
+      Destino
+      <input placeholder="Lisboa, Portugal" />
+    </label>
+    <label>
+      Ida
+      <input type="date" />
+    </label>
+    <label>
+      Vuelta
+      <input type="date" />
+    </label>
+
+    <div class="campo">
+      <span>Número de pasajeros</span>
+      <div class="contador">
+        <button type="button" aria-label="Quitar pasajero">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14" />
+          </svg>
+        </button>
+        <span>2 pasajeros</span>
+        <button type="button" aria-label="Añadir pasajero">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="formulario-pie">
+    <span class="apagado">Todo listo para tu próxima aventura.</span>
+    <button type="button" class="boton">Crear viaje</button>
+  </div>
+</form>

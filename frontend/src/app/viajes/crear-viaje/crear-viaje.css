@@ -1,0 +1,61 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+}
+
+.formulario h2 {
+  margin: 0 0 0.25rem;
+}
+
+.formulario p {
+  margin: 0;
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.contador {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+}
+
+.contador button {
+  display: flex;
+  padding: 0.35rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-cabecera);
+  color: var(--color-principal-oscuro);
+  cursor: pointer;
+}
+
+.formulario-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+@media (max-width: 600px) {
+  .dos-columnas {
+    grid-template-columns: 1fr;
+  }
+}
