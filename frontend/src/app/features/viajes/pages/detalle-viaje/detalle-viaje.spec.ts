@@ -1,23 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
-import { DetalleViaje } from './detalle-viaje';
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { VIAJES_EJEMPLO } from '../../data/datos-ejemplo';
 
-describe('DetalleViaje', () => {
-  let component: DetalleViaje;
-  let fixture: ComponentFixture<DetalleViaje>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DetalleViaje],
-      providers: [provideRouter([])],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(DetalleViaje);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+@Component({
+  selector: 'app-detalle-viaje',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  templateUrl: './detalle-viaje.html',
+  styleUrl: './detalle-viaje.css',
+})
+export class DetalleViaje {
+  // Solo interfaz: de momento siempre enseña el primer viaje de ejemplo.
+  protected readonly viaje = VIAJES_EJEMPLO[0];
+}
