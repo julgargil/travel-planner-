@@ -1,0 +1,19 @@
+# Node / Angular
+node_modules/
+dist/
+.angular/
+
+# Python (para el backend, más adelante)
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Base de datos y archivos subidos
+*.db
+uploads/
+
+# Secretos y configuración local del IDE
+.env
+.vscode/
+.idea/
