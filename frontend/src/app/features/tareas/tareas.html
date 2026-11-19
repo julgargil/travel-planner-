@@ -1,5 +1,54 @@
 <!-- Componente de P3. Solo se edita esta carpeta: tareas/ -->
-<section class="tarjeta seccion">
-  <h2>Tareas</h2>
-  <p class="apagado">Próximamente.</p>
-</section>
+<div>
+  <div class="cabecera-seccion">
+    <h1 class="titulo-seccion">Mis tareas</h1>
+  </div>
+
+  <form class="nueva-tarea" (submit)="anadirTarea($event, campo)">
+    <label>
+      Nueva tarea
+      <input
+        #campo
+        type="text"
+        placeholder="Escribe una nueva tarea..."
+        autocomplete="off"
+        [class.invalido]="error"
+        (input)="error = ''">
+    </label>
+    <button class="boton" type="submit">
+      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      Añadir
+    </button>
+    @if (error) {
+      <p class="error" role="alert">{{ error }}</p>
+    }
+  </form>
+
+  <section class="tarjeta">
+      <header class="tarjeta-cabecera">
+        <h2>Lista de tareas</h2>
+        <span class="pastilla">{{ pendientes }} {{ pendientes === 1 ? 'pendiente' : 'pendientes' }}</span>
+      </header>
+ 
+      <ul class="lista">
+      @for (tarea of tareas; track tarea.id) {
+        <li class="tarea" [class.hecha]="tarea.completada">
+          <input
+            type="checkbox"
+            class="casilla"
+            [checked]="tarea.completada"
+            (change)="tarea.completada = !tarea.completada"
+            aria-label="Marcar como completada">
+          <span class="tarea-texto">{{ tarea.descripcion }}</span>
+          <button type="button" class="borrar" (click)="eliminar(tarea.id)" aria-label="Eliminar tarea">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5"/></svg>
+          </button>
+        </li>
+      } @empty {
+        <li class="tarea"><span class="tarea-texto apagado">No hay tareas todavía.</span></li>
+      }
+      </ul> 
+ 
+      <p class="apagado pie">{{ completadas }} de {{ tareas.length }} tareas completadas</p>
+  </section>
+</div>

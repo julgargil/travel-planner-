@@ -1,0 +1,137 @@
+/* Estilos propios de la pantalla "Mis tareas". */
+
+.pagina {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* Formulario: campo a la izquierda, botón a la derecha */
+.nueva-tarea {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.nueva-tarea label {
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.nueva-tarea input {
+  font-weight: 400;
+  font-size: 0.85rem;
+  min-height: 2.75rem;
+}
+
+.nueva-tarea .boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0 1.6rem;
+}
+
+/* Tarjeta con la lista */
+.tarjeta-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  background: var(--color-cabecera);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.tarjeta-cabecera h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.25rem;
+}
+
+.tarea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.9rem;
+}
+
+.tarea:last-child {
+  border-bottom: none;
+}
+
+.tarea-texto {
+  flex: 1;
+}
+
+.tarea.hecha .tarea-texto {
+  text-decoration: line-through;
+  color: var(--color-apagado);
+}
+
+/* Casilla personalizada */
+.casilla {
+  appearance: none;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  border: 1.5px solid #b9c4cd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+}
+
+.casilla:checked {
+  background: var(--color-principal-oscuro);
+  border-color: var(--color-principal-oscuro);
+}
+
+.casilla:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Botón de papelera */
+.borrar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  color: var(--color-apagado);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.borrar:hover {
+  color: var(--color-peligro);
+}
+
+.borrar .icono {
+  width: 16px;
+  height: 16px;
+}
+
+/* Pie con el resumen */
+.pie {
+  margin: 0;
+  padding: 0.75rem 1.25rem 1rem;
+  font-size: 0.75rem;
+}
