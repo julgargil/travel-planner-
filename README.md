@@ -9,10 +9,14 @@ Proyecto de Ingeniería del Software · Universidad de Sevilla · Curso 26/27
 | Parte | Tecnología |
 | --- | --- |
 | Interfaz | Angular 22 (TypeScript, HTML y CSS) |
+| Backend | Flask (Python) |
+| Base de datos | MariaDB |
 | Tests | Vitest, a través de `ng test` |
 | Control de versiones | git y GitHub (issues y tablero) |
 
 ## Cómo arrancar el proyecto
+
+### Frontend
 
 Requisitos: [Node.js](https://nodejs.org) 24 y Angular CLI (`npm install -g @angular/cli`).
 
@@ -31,18 +35,63 @@ Abre http://localhost:4200. Para pasar los tests:
 ng test --watch=false
 ```
 
+### Backend
+
+Requisitos: [Python](https://www.python.org) 3 y [MariaDB](https://mariadb.org) instalado en tu equipo.
+
+**1. Crea la base de datos** con el script `database/database.sql` en tu gestor de base de datos.
+
+**2. Configura la conexión.** Haz una copia de `backend/.env.example` con el nombre `.env` y rellénala con los datos de tu gestor de base de datos (usuario, contraseña, puerto…). El archivo `.env` es solo tuyo: no lo subas a git.
+
+**3. Instala Flask y sus dependencias**, desde la carpeta `backend`:
+
+```bash
+python -m venv venv
+source venv/Scripts/activate
+pip install flask flask-cors flask-sqlalchemy pymysql python-dotenv
+pip freeze > requirements.txt
+```
+
+Estos comandos son para Git Bash en Windows. En cmd, el segundo se escribe `venv\Scripts\activate`.
+
+**4. Usa el intérprete del entorno virtual en VS Code.** Pulsa `Ctrl + Shift + P`, elige **Python: Select Interpreter** y selecciona el de `backend/venv`. Así VS Code encuentra las librerías instaladas.
+
+**5. Arranca el backend y comprueba que funciona:**
+
+```bash
+python app.py
+```
+
+Y entra en:
+
+| URL | Qué comprueba |
+| --- | --- |
+| http://localhost:5000/api/hello | Que el backend está funcionando |
+| http://localhost:5000/api/test-db | Que el backend se conecta a la base de datos |
+
 ## Fases del proyecto
 
 1. **Interfaz**: todas las pantallas, solo visuales y con datos de ejemplo. Los botones aún no hacen nada.
-2. **Funcionalidad**: cada uno conecta su parte para que guarde y lea datos de verdad.
+2. **Funcionalidad**: cada uno conecta su parte para que guarde y lea datos de verdad, por medio del backend (Flask) y la base de datos (MariaDB).
 
-Ahora estamos en la **fase 1**.
+Ahora estamos en la **fase 2**.
 
 ## Estructura y reparto
 
 ```
 travel-planner-/
 ├── docs/                       ← acta, diario, declaración de IA…       (todos)
+├── backend/
+│   ├── venv/                   ← entorno virtual de Python
+│   ├── app.py                  ← arranque de Flask y rutas de la API
+│   ├── database.py             ← conexión con la base de datos
+│   ├── models.py               ← las tablas como clases de Python
+│   ├── routes/                 ← rutas de los endpoints (vacía al inicio)
+│   ├── requirements.txt        ← dependencias de Python
+│   └── .env.example            ← plantilla de la configuración (copiar a .env)
+├── database/
+│   ├── database.sql            ← script que crea la base de datos
+│   └── (imagen).png            ← diagrama UML
 └── frontend/src/
     ├── styles.css              ← solo importa los 3 de styles/          (P1)
     ├── styles/
