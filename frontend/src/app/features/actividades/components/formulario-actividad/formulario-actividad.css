@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+}
+
+.formulario h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.formulario p {
+  margin: 0;
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+.ancho-completo {
+  grid-column: 1 / -1;
+}
+
+.formulario textarea {
+  resize: vertical;
+}
+
+.formulario-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+@media (max-width: 600px) {
+  .dos-columnas {
+    grid-template-columns: 1fr;
+  }
+}

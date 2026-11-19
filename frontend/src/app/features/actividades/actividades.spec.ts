@@ -41,4 +41,9 @@ describe('Actividades', () => {
     const html = fixture.nativeElement as HTMLElement;
     expect(html.querySelector('app-filtros-actividad')).not.toBeNull();
   });
+
+  it('muestra el formulario de nueva actividad', () => {
+    const html = fixture.nativeElement as HTMLElement;
+    expect(html.querySelector('app-formulario-actividad')).not.toBeNull();
+  });
 });

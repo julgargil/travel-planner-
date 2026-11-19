@@ -1,0 +1,52 @@
+<!-- Solo interfaz: de momento el botón no envía ni guarda datos. -->
+<form class="tarjeta formulario">
+  <div>
+    <h3>Nueva actividad</h3>
+    <p class="apagado">Añade un plan con fecha, hora y ubicación al itinerario.</p>
+  </div>
+
+  <div class="dos-columnas">
+    <label>
+      Título
+      <input type="text" name="titulo" placeholder="Visita a la Torre de Belém" />
+    </label>
+
+    <label>
+      Categoría
+      <select name="categoria">
+        @for (categoria of categorias; track categoria) {
+          <option [value]="categoria">{{ categoria }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      Fecha
+      <input type="date" name="fecha" />
+    </label>
+
+    <label>
+      Hora
+      <input type="time" name="hora" />
+    </label>
+
+    <label class="ancho-completo">
+      Ubicación
+      <input type="text" name="ubicacion" placeholder="Av. Brasília, Lisboa" />
+    </label>
+
+    <label class="ancho-completo">
+      Notas (opcional)
+      <textarea
+        name="notas"
+        rows="3"
+        placeholder="Detalles útiles, consejos o recordatorios..."
+      ></textarea>
+    </label>
+  </div>
+
+  <div class="formulario-pie">
+    <span class="apagado">Podrás editar o borrar la actividad más adelante.</span>
+    <button type="button" class="boton">Añadir actividad</button>
+  </div>
+</form>
