@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FiltrosActividad } from './components/filtros-actividad/filtros-actividad';
 import { TarjetaActividad } from './components/tarjeta-actividad/tarjeta-actividad';
 import { Actividad } from './data/actividad.model';
 import { ACTIVIDADES_EJEMPLO } from './data/datos-ejemplo';
@@ -11,7 +12,7 @@ interface DiaItinerario {
 
 @Component({
   selector: 'app-actividades',
-  imports: [TarjetaActividad],
+  imports: [FiltrosActividad, TarjetaActividad],
   templateUrl: './actividades.html',
   styleUrl: './actividades.css',
 })

@@ -36,4 +36,9 @@ describe('Actividades', () => {
     expect(dias.length).toBe(4);
     expect(tarjetas.length).toBe(ACTIVIDADES_EJEMPLO.length);
   });
+
+  it('muestra la barra de filtros por categoría', () => {
+    const html = fixture.nativeElement as HTMLElement;
+    expect(html.querySelector('app-filtros-actividad')).not.toBeNull();
+  });
 });

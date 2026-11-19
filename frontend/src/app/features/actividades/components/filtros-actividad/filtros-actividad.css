@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.filtro-boton {
+  font-family: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.filtro-boton:hover {
+  border-color: var(--color-principal);
+}
+
+.filtro-activo {
+  border-color: var(--color-principal);
+}

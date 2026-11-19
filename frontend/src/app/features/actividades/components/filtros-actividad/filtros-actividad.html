@@ -1,0 +1,11 @@
+<div class="filtros" role="group" aria-label="Filtrar actividades por categoría">
+  <button type="button" class="pastilla filtro-boton filtro-activo" aria-pressed="true">
+    Todas
+  </button>
+
+  @for (categoria of categorias; track categoria) {
+    <button type="button" class="pastilla pastilla-gris filtro-boton" aria-pressed="false">
+      {{ categoria }}
+    </button>
+  }
+</div>
