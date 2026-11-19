@@ -1,5 +1,21 @@
 <!-- Componente de P5. Solo se edita esta carpeta: documentos/ -->
 <section class="tarjeta seccion">
   <h2>Documentos</h2>
-  <p class="apagado">Próximamente.</p>
+  <p class="apagado">Billetes, reservas y otros archivos del viaje.</p>
+
+  <!-- Zona de subida. Fase 1: solo interfaz, todavía no guarda nada -->
+  <div class="zona-subida">
+    <svg class="icono icono-subida" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m17 8-5-5-5 5" />
+      <path d="M12 3v12" />
+    </svg>
+
+    <p class="zona-subida-texto">Arrastra aquí un archivo o</p>
+
+    <input id="archivo-documento" class="selector-oculto" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+    <label class="boton" for="archivo-documento">Elegir archivo</label>
+
+    <p class="apagado">PDF, JPG o PNG · máximo 10 MB</p>
+  </div>
 </section>
