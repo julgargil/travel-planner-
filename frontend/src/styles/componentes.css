@@ -75,6 +75,15 @@
   background: var(--color-peligro);
 }
 
+.boton-secundario:hover {
+  background: var(--color-cabecera);
+  color: var(--color-principal-oscuro);
+}
+
+.boton-peligro:hover {
+  background: var(--color-peligro-hover);
+}
+
 /* Iconos SVG de línea, como los del menú */
 .icono {
   width: 18px;

@@ -9,5 +9,7 @@
   --color-apagado: #6b7a88;
   --color-pastilla: #e6f0f5;
   --color-peligro: #c0392b;
+  --color-peligro-hover: #a02f23;
+  --color-borde-input: #b9c4cd;
   --radio: 10px;
 }

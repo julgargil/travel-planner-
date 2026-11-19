@@ -85,7 +85,7 @@
   height: 18px;
   padding: 0;
   margin: 0;
-  border: 1.5px solid #b9c4cd;
+  border: 1.5px solid var(--color-borde-input);
   border-radius: 4px;
   background: white;
   cursor: pointer;
