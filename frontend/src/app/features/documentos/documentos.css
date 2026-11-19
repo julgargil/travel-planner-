@@ -1,0 +1,45 @@
+/* Estilos propios de la sección Documentos (P5). Los colores salen de styles/variables.css */
+
+/* Recuadro discontinuo donde se suelta o se elige el archivo */
+.zona-subida {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+  border: 2px dashed var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-cabecera);
+  text-align: center;
+}
+
+.zona-subida p {
+  margin: 0;
+}
+
+.icono-subida {
+  width: 32px;
+  height: 32px;
+  color: var(--color-principal);
+}
+
+.zona-subida-texto {
+  font-weight: 600;
+}
+
+/* El <input type="file"> del navegador es feo: se oculta y se usa el botón (label) en su lugar */
+.selector-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Si se llega con el tabulador, se marca el botón para saber dónde estás */
+.selector-oculto:focus-visible + .boton {
+  outline: 2px solid var(--color-principal-oscuro);
+  outline-offset: 2px;
+}
