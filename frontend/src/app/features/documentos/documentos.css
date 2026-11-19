@@ -43,3 +43,66 @@
   outline: 2px solid var(--color-principal-oscuro);
   outline-offset: 2px;
 }
+
+/* Lista de documentos del viaje */
+.lista-documentos {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.documento {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.documento:last-child {
+  border-bottom: none;
+}
+
+.icono-documento {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--color-principal);
+}
+
+/* Nombre arriba y detalles (tipo · tamaño · fecha) debajo */
+.documento-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.documento-nombre {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.documento-acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Botones más pequeños que los de la página */
+.documento-acciones .boton {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* Descargar está desactivado hasta conectar el backend */
+.documento-acciones .boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lista-vacia {
+  margin: 1rem 0 0;
+  text-align: center;
+}
