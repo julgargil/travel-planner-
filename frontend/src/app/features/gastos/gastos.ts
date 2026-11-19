@@ -1,42 +1,89 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Necesario para el formulario
 
+// Definimos cómo es un Gasto
 interface Gasto {
   id: number;
   concepto: string;
-  categoria: string;
   importe: number;
+  categoria: 'Transporte' | 'Alojamiento' | 'Comida' | 'Actividades' | 'Otros';
 }
 
 @Component({
   selector: 'app-gastos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './gastos.html',
   styleUrls: ['./gastos.css']
 })
-export class Gastos implements OnInit {
+export class Gastos {
+  // Lista inicial de gastos de ejemplo
   gastos: Gasto[] = [
-    { id: 1, concepto: 'Vuelo Tigerair', categoria: 'Transporte', importe: 420 },
-    { id: 2, concepto: 'Vuelo Scoot', categoria: 'Transporte', importe: 360 },
-    { id: 3, concepto: 'KOKO Hotel Ginza', categoria: 'Alojamiento', importe: 460 }
+    { id: 1, concepto: 'Vuelo Sevilla - Lisboa', importe: 120, categoria: 'Transporte' },
+    { id: 2, concepto: 'Hotel 4 noches', importe: 350, categoria: 'Alojamiento' },
+    { id: 3, concepto: 'Cena en Alfama', importe: 45, categoria: 'Comida' }
   ];
 
-  totalGastos: number = 0;
-  totalTransporte: number = 0;
-  totalAlojamiento: number = 0;
+  // Variables para el formulario de nuevo gasto
+  nuevoConcepto: string = '';
+  nuevoImporte: number | null = null;
+  nuevaCategoria: Gasto['categoria'] = 'Otros';
 
-  ngOnInit(): void {
-    this.calcularTotales();
+  // Variable para el filtro actual
+  filtroActual: string = 'Todos';
+
+  // Lista de categorías disponibles
+  categorias = ['Transporte', 'Alojamiento', 'Comida', 'Actividades', 'Otros'];
+
+  // 1. FUNCIÓN: Añadir un nuevo gasto
+  agregarGasto() {
+    if (this.nuevoConcepto && this.nuevoImporte && this.nuevoImporte > 0) {
+      const nuevo: Gasto = {
+        id: Date.now(), // ID único temporal
+        concepto: this.nuevoConcepto,
+        importe: this.nuevoImporte,
+        categoria: this.nuevaCategoria
+      };
+      
+      // Añadimos el gasto al principio de la lista
+      this.gastos.unshift(nuevo);
+      
+      // Limpiamos el formulario
+      this.nuevoConcepto = '';
+      this.nuevoImporte = null;
+      this.nuevaCategoria = 'Otros';
+    }
   }
 
-  calcularTotales(): void {
-    this.totalGastos = this.gastos.reduce((sum, g) => sum + g.importe, 0);
-    this.totalTransporte = this.gastos
-      .filter(g => g.categoria === 'Transporte')
-      .reduce((sum, g) => sum + g.importe, 0);
-    this.totalAlojamiento = this.gastos
-      .filter(g => g.categoria === 'Alojamiento')
-      .reduce((sum, g) => sum + g.importe, 0);
+  // 2. FUNCIÓN: Borrar un gasto
+  borrarGasto(id: number) {
+    this.gastos = this.gastos.filter(g => g.id !== id);
+  }
+
+  // 3. FUNCIÓN: Cambiar el filtro
+  setFiltro(categoria: string) {
+    this.filtroActual = categoria;
+  }
+
+  // 4. COMPUTADO: Obtener los gastos filtrados para mostrarlos en la lista
+  get gastosFiltrados() {
+    if (this.filtroActual === 'Todos') {
+      return this.gastos;
+    }
+    return this.gastos.filter(g => g.categoria === this.filtroActual);
+  }
+
+  // 5. COMPUTADOS: Calcular los totales dinámicamente
+  get totalGastos() {
+    return this.gastosFiltrados.reduce((sum, g) => sum + g.importe, 0);
+  }
+
+  get totalTransporte() {
+    return this.gastos.filter(g => g.categoria === 'Transporte').reduce((sum, g) => sum + g.importe, 0);
+  }
+
+  get totalAlojamiento() {
+    return this.gastos.filter(g => g.categoria === 'Alojamiento').reduce((sum, g) => sum + g.importe, 0);
   }
 }

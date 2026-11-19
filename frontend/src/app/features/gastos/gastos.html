@@ -1,11 +1,24 @@
 <div class="gastos-container">
-  <h2 class="titulo-seccion">Gastos</h2>
+  <div class="cabecera-seccion">
+    <h2 class="titulo-seccion">Gastos</h2>
+  </div>
 
   <div class="panel-gastos">
-    <!-- Tarjetas de Resumen -->
+    
+    <!-- 1. FORMULARIO PARA NUEVO GASTO -->
+    <div class="formulario-gasto">
+      <input type="text" placeholder="Concepto (ej. Cena)" [(ngModel)]="nuevoConcepto" class="input-form">
+      <input type="number" placeholder="Importe (€)" [(ngModel)]="nuevoImporte" class="input-form">
+      <select [(ngModel)]="nuevaCategoria" class="select-form">
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+      <button (click)="agregarGasto()" class="btn-añadir">+ Añadir gasto</button>
+    </div>
+
+    <!-- 2. TARJETAS DE RESUMEN (Dinámicas) -->
     <div class="resumen-tarjetas">
       <div class="tarjeta-resumen destacada">
-        <span class="tarjeta-label">Total</span>
+        <span class="tarjeta-label">Total {{ filtroActual === 'Todos' ? '' : filtroActual }}</span>
         <span class="tarjeta-valor">{{ totalGastos | number:'1.0-0' }} €</span>
       </div>
       <div class="tarjeta-resumen">
@@ -18,24 +31,40 @@
       </div>
     </div>
 
-    <!-- Lista de Gastos -->
+    <!-- 3. BOTONES DE FILTRO -->
+    <div class="filtros-container">
+      <button 
+        class="btn-filtro" 
+        [class.activo]="filtroActual === 'Todos'"
+        (click)="setFiltro('Todos')">
+        Todos
+      </button>
+      <button 
+        *ngFor="let cat of categorias"
+        class="btn-filtro" 
+        [class.activo]="filtroActual === cat"
+        (click)="setFiltro(cat)">
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- 4. LISTA DE GASTOS FILTRADA -->
     <div class="lista-gastos">
-      <div class="gasto-item" *ngFor="let gasto of gastos">
+      <div *ngIf="gastosFiltrados.length === 0" class="mensaje-vacio">
+        No hay gastos en esta categoría.
+      </div>
+      
+      <div class="gasto-item" *ngFor="let gasto of gastosFiltrados">
         <div class="gasto-info">
           <span class="gasto-concepto">{{ gasto.concepto }}</span>
           <span class="gasto-badge">{{ gasto.categoria }}</span>
         </div>
-        <span class="gasto-importe">{{ gasto.importe }} €</span>
+        <div class="gasto-acciones">
+          <span class="gasto-importe">{{ gasto.importe }} €</span>
+          <button (click)="borrarGasto(gasto.id)" class="btn-borrar" title="Borrar gasto">🗑️</button>
+        </div>
       </div>
     </div>
 
-    <!-- Widget del Tiempo -->
-    <div class="widget-tiempo">
-      <svg class="icono-nube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.1388 20.1948 10.2093 17.8829 10.0211C17.4338 6.61117 14.5262 4 11 4C7.13401 4 4 7.13401 4 11C4 11.2336 4.01138 11.4646 4.03357 11.6923C1.77665 12.1469 0 14.1206 0 16.5C0 19.5376 2.46243 22 5.5 22H17.5V19Z" fill="#e2e8f0"/>
-        <path d="M17.5 19H5.5C2.46243 19 0 16.5376 0 13.5C0 11.1206 1.77665 9.14692 4.03357 8.69229C4.01138 8.46461 4 8.23359 4 8C4 4.13401 7.13401 1 11 1C14.5262 1 17.4338 3.61117 17.8829 7.02108C20.1948 7.2093 22 9.13878 22 11.5C22 13.9853 19.9853 16 17.5 16" stroke="#475569" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>Tiempo: Tokio 9º / 2º · Yokohama 10º / 3º · Izu 12º / 5º</span>
-    </div>
   </div>
 </div>
