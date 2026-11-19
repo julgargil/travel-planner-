@@ -1,5 +1,70 @@
-<!-- Componente de P4. Solo se edita esta carpeta: gastos/ -->
-<section class="tarjeta seccion">
-  <h2>Gastos</h2>
-  <p class="apagado">Próximamente.</p>
-</section>
+<div class="gastos-container">
+  <div class="cabecera-seccion">
+    <h2 class="titulo-seccion">Gastos</h2>
+  </div>
+
+  <div class="panel-gastos">
+    
+    <!-- 1. FORMULARIO PARA NUEVO GASTO -->
+    <div class="formulario-gasto">
+      <input type="text" placeholder="Concepto (ej. Cena)" [(ngModel)]="nuevoConcepto" class="input-form">
+      <input type="number" placeholder="Importe (€)" [(ngModel)]="nuevoImporte" class="input-form">
+      <select [(ngModel)]="nuevaCategoria" class="select-form">
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+      <button (click)="agregarGasto()" class="btn-añadir">+ Añadir gasto</button>
+    </div>
+
+    <!-- 2. TARJETAS DE RESUMEN (Dinámicas) -->
+    <div class="resumen-tarjetas">
+      <div class="tarjeta-resumen destacada">
+        <span class="tarjeta-label">Total {{ filtroActual === 'Todos' ? '' : filtroActual }}</span>
+        <span class="tarjeta-valor">{{ totalGastos | number:'1.0-0' }} €</span>
+      </div>
+      <div class="tarjeta-resumen">
+        <span class="tarjeta-label">Transporte</span>
+        <span class="tarjeta-valor">{{ totalTransporte | number:'1.0-0' }} €</span>
+      </div>
+      <div class="tarjeta-resumen">
+        <span class="tarjeta-label">Alojamiento</span>
+        <span class="tarjeta-valor">{{ totalAlojamiento | number:'1.0-0' }} €</span>
+      </div>
+    </div>
+
+    <!-- 3. BOTONES DE FILTRO -->
+    <div class="filtros-container">
+      <button 
+        class="btn-filtro" 
+        [class.activo]="filtroActual === 'Todos'"
+        (click)="setFiltro('Todos')">
+        Todos
+      </button>
+      <button 
+        *ngFor="let cat of categorias"
+        class="btn-filtro" 
+        [class.activo]="filtroActual === cat"
+        (click)="setFiltro(cat)">
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- 4. LISTA DE GASTOS FILTRADA -->
+    <div class="lista-gastos">
+      <div *ngIf="gastosFiltrados.length === 0" class="mensaje-vacio">
+        No hay gastos en esta categoría.
+      </div>
+      
+      <div class="gasto-item" *ngFor="let gasto of gastosFiltrados">
+        <div class="gasto-info">
+          <span class="gasto-concepto">{{ gasto.concepto }}</span>
+          <span class="gasto-badge">{{ gasto.categoria }}</span>
+        </div>
+        <div class="gasto-acciones">
+          <span class="gasto-importe">{{ gasto.importe }} €</span>
+          <button (click)="borrarGasto(gasto.id)" class="btn-borrar" title="Borrar gasto">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
