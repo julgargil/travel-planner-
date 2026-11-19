@@ -1,0 +1,4 @@
+/* El pulido visual del itinerario se añadirá en el commit de estilos. */
+:host {
+  display: block;
+}

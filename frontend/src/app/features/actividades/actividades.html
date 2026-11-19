@@ -1,5 +1,30 @@
 <!-- Componente de P2. Solo se edita esta carpeta: actividades/ -->
 <section class="tarjeta seccion">
-  <h2>Actividades</h2>
-  <p class="apagado">Próximamente.</p>
+  <header class="cabecera">
+    <div>
+      <h2>Itinerario</h2>
+      <p class="apagado">Actividades planificadas por día para este viaje.</p>
+    </div>
+    <span class="pastilla">
+      {{ totalActividades }} {{ totalActividades === 1 ? 'actividad' : 'actividades' }}
+    </span>
+  </header>
+
+  @if (diasItinerario.length === 0) {
+    <p class="apagado">Todavía no hay actividades planificadas para este viaje.</p>
+  } @else {
+    <div class="itinerario-dias">
+      @for (dia of diasItinerario; track dia.fecha) {
+        <section class="dia-grupo">
+          <h3 class="dia-titulo">{{ dia.fechaFormateada }}</h3>
+
+          <div class="dia-lista">
+            @for (actividad of dia.actividades; track actividad.id) {
+              <app-tarjeta-actividad [actividad]="actividad" />
+            }
+          </div>
+        </section>
+      }
+    </div>
+  }
 </section>

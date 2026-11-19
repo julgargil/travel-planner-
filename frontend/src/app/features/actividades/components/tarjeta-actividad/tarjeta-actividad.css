@@ -1,0 +1,4 @@
+/* El diseño visual detallado de la tarjeta se añadirá en el commit de estilos. */
+:host {
+  display: block;
+}

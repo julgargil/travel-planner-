@@ -1,0 +1,19 @@
+<article class="tarjeta actividad">
+  <header class="actividad-cabecera">
+    <time class="actividad-hora apagado">{{ actividad().hora }}</time>
+    <span class="pastilla">{{ actividad().categoria }}</span>
+  </header>
+
+  <div class="actividad-cuerpo">
+    <h4>{{ actividad().titulo }}</h4>
+    <p class="apagado">{{ actividad().ubicacion }}</p>
+    @if (actividad().notas) {
+      <p class="actividad-notas">{{ actividad().notas }}</p>
+    }
+  </div>
+
+  <footer class="actividad-acciones">
+    <button type="button" class="boton boton-secundario">Editar</button>
+    <button type="button" class="boton boton-peligro">Borrar</button>
+  </footer>
+</article>
