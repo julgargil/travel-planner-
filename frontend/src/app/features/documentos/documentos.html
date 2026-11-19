@@ -1,6 +1,9 @@
 <!-- Componente de P5. Solo se edita esta carpeta: documentos/ -->
 <section class="tarjeta seccion">
-  <h2>Documentos</h2>
+  <div class="cabecera">
+    <h2>Documentos</h2>
+    <span class="pastilla">{{ documentos.length }} {{ documentos.length === 1 ? 'documento' : 'documentos' }}</span>
+  </div>
   <p class="apagado">Billetes, reservas y otros archivos del viaje.</p>
 
   <!-- Zona de subida. Fase 1: solo interfaz, todavía no guarda nada -->
@@ -18,4 +21,42 @@
 
     <p class="apagado">PDF, JPG o PNG · máximo 10 MB</p>
   </div>
+
+  <!-- Lista de documentos. Fase 1: datos de ejemplo; borrar solo quita de la lista -->
+  @if (documentos.length === 0) {
+    <p class="apagado lista-vacia">Todavía no hay documentos en este viaje.</p>
+  } @else {
+    <ul class="lista-documentos">
+      @for (documento of documentos; track documento.id) {
+        <li class="documento">
+          <svg class="icono icono-documento" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <path d="M14 2v6h6" />
+          </svg>
+
+          <div class="documento-info">
+            <span class="documento-nombre">{{ documento.nombre }}</span>
+            <span class="apagado">
+              {{ etiquetaTipo(documento.tipo) }} · {{ formatoTamano(documento.tamano) }} · {{ formatoFecha(documento.fechaSubida) }}
+            </span>
+          </div>
+
+          <div class="documento-acciones">
+            <!-- Descargar necesita el archivo real: se activará al conectar el backend -->
+            <button type="button" class="boton boton-secundario" disabled title="Disponible cuando conectemos el backend">
+              Descargar
+            </button>
+            <button
+              type="button"
+              class="boton boton-peligro"
+              (click)="borrar(documento.id)"
+              [attr.aria-label]="'Borrar ' + documento.nombre"
+            >
+              Borrar
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
 </section>
